@@ -89,7 +89,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public override void ViewWillAppear(bool animated)
 		{
-			View.BackgroundColor = UIColor.White;
+			//View.BackgroundColor = UIColor.White;
 			base.ViewWillAppear(animated);
 		}
 
@@ -171,8 +171,8 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public override void ViewDidAppear(bool animated)
 		{
-			Platform.DidAppear();
-			base.ViewDidAppear(animated);
+			//Platform.DidAppear();
+			//base.ViewDidAppear(animated);
 		}
 
 		public override void ViewDidLayoutSubviews()
@@ -183,7 +183,7 @@ namespace Xamarin.Forms.Platform.iOS
 
 		public override void ViewWillAppear(bool animated)
 		{
-			View.BackgroundColor = UIColor.White;
+			//View.BackgroundColor = UIColor.White;
 			Platform.WillAppear();
 			base.ViewWillAppear(animated);
 		}
