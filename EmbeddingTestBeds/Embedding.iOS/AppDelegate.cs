@@ -30,6 +30,8 @@ namespace Embedding.iOS
 			Shared = this;
 			_window = new UIWindow(UIScreen.MainScreen.Bounds);
 
+			_window.BackgroundColor = UIColor.Cyan;
+
 			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes
 			{
 				TextColor = UIColor.White
@@ -74,6 +76,7 @@ namespace Embedding.iOS
 			if (_alertsAndActionSheets == null)
 			{
 				_alertsAndActionSheets = new AlertsAndActionSheets().CreateViewController();
+				_alertsAndActionSheets.View.BackgroundColor = UIColor.Clear;
 			}
 
 			_navigation.PushViewController(_alertsAndActionSheets, true);

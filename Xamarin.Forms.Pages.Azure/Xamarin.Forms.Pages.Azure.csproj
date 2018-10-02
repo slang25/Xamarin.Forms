@@ -12,4 +12,4 @@
     <ProjectReference Include="..\Xamarin.Forms.Pages\Xamarin.Forms.Pages.csproj" />
     <ProjectReference Include="..\Xamarin.Forms.Xaml\Xamarin.Forms.Xaml.csproj" />
   </ItemGroup>
- </Project>
+</Project>
