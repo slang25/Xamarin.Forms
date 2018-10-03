@@ -304,10 +304,6 @@ namespace Xamarin.Forms.Platform.UWP
 			UpdateShowTitle();
 
 			UpdateTitleOnParents();
-
-			UpdateTitleIcon();
-
-			UpdateTitleView();
 		}
 
 		void MultiPagePropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -377,6 +373,12 @@ namespace Xamarin.Forms.Platform.UWP
 			Element.SendAppearing();
 			UpdateBackButton();
 			UpdateTitleOnParents();
+
+			if (_parentMasterDetailPage != null)
+			{
+				UpdateTitleView();
+				UpdateTitleIcon();
+			}
 		}
 
 		void OnNativeSizeChanged(object sender, SizeChangedEventArgs e)
@@ -460,8 +462,6 @@ namespace Xamarin.Forms.Platform.UWP
 
 			UpdateTitleVisible();
 			UpdateTitleOnParents();
-			UpdateTitleIcon();
-			UpdateTitleView();
 
 			if (isAnimated && _transition == null)
 			{
@@ -546,10 +546,16 @@ namespace Xamarin.Forms.Platform.UWP
 			if (_currentPage == null)
 				return;
 
-			_container.TitleView = TitleView;
-
+			// If the container TitleView gets initialized before the MDP TitleView it causes the 
+			// MDP TitleView to not render correctly
 			if (_parentMasterDetailPage != null && Platform.GetRenderer(_parentMasterDetailPage) is ITitleViewProvider parent)
+			{
+				_container.TitleView = null;
 				parent.TitleView = TitleView;
+			}
+			else if (_parentMasterDetailPage == null)
+				_container.TitleView = TitleView;
+
 		}
 	}
 }
